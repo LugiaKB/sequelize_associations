@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '../sequelize';
+import Office from './OfficeModel'
 
 export interface EmployeeAttributes {
     employeeNumber: number,
@@ -8,7 +9,7 @@ export interface EmployeeAttributes {
     extension: string,
     email: string,
     officeCode: number,
-    reportsTo: number,
+    reportsTo?: number,
     jobTitle: string
 };
 
@@ -39,6 +40,20 @@ Employee.init({
 }, {
     sequelize,
     modelName: 'employee'
+});
+
+Office.hasMany(Employee, {
+    foreignKey: 'officeCode'
+});
+
+Employee.hasOne(Office, {
+    foreignKey: 'officeCode'
+});
+
+Employee.hasOne(Employee, {
+    foreignKey: 'reportsTo',
+    onDelete: 'SET NULL',
+    onUpdate: 'SET NULL'
 });
 
 export default Employee;

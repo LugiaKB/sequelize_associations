@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '../sequelize';
+import Employee from './EmployeeModel';
 
 export interface CustomerAttributes {
     customerNumber: number,
@@ -8,13 +9,13 @@ export interface CustomerAttributes {
     contactFirstName: string,
     phone: string,
     addressLine1: string,
-    addressLine2: string,
+    addressLine2?: string,
     city: string,
-    state: string,
-    postalCode: string,
+    state?: string,
+    postalCode?: string,
     country: string,
-    salesRepEmployeeNumber: number,
-    creditLimit: number,
+    salesRepEmployeeNumber?: number,
+    creditLimit?: number,
 };
 
 export interface CustomerInput extends Optional<CustomerAttributes, 'customerNumber'> {};
@@ -55,5 +56,12 @@ Customer.init({
     sequelize,
     modelName: 'customer'
 });
+
+Employee.hasMany(Customer, {
+    foreignKey: 'salesRepEmployeeNumber',
+    onDelete: 'SET NULL',
+    onUpdate: 'SET NULL'
+});
+
 
 export default Customer;

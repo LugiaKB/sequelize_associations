@@ -1,13 +1,14 @@
 import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '../sequelize';
+import Customer from './CustomerModel';
 
 export interface OrderAttributes {
     orderNumber: number,
     orderDate: Date,
     requiredDate: Date,
-    shippedDate: Date,
+    shippedDate?: Date,
     status: string,
-    comments: string,
+    comments?: string,
     customerNumber: number
 };
 
@@ -37,5 +38,13 @@ Order.init({
     sequelize,
     modelName: 'order'
 });
+
+Customer.hasMany(Order, {
+    foreignKey: 'customerNumber'
+});
+
+Order.hasOne(Customer, {
+    foreignKey: 'customerNumber'
+})
 
 export default Order;

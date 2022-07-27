@@ -1,4 +1,5 @@
 import {Error, Sequelize} from 'sequelize';
+import { initDB } from './initDB';
 
 export const sequelize = new Sequelize('classic2', 'root', '05102001', {
     host: 'localhost',
@@ -18,6 +19,5 @@ export default () => {
         }).catch((error: Error) => {
             console.log(`Conexão não foi bem sucedida: ${error}`)
         });
-    
-    sequelize.sync();
+
 }
