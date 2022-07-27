@@ -6,6 +6,7 @@ import productLine from './ProductLineRoute';
 import customer from './CustomerRoute';
 import order from './OrderRoute';
 import product from './ProductRoute';
+import payment from './PaymentRoute';
 
 const routes: Router = express.Router();
 
@@ -15,5 +16,6 @@ routes.use('/productline', productLine);
 routes.use('/customer', customer);
 routes.use('/order', order);
 routes.use('/product', product);
+routes.use('/payment', payment);
 
 export default routes;
