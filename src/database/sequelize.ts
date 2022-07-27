@@ -17,5 +17,7 @@ export default () => {
             console.log("Conexão bem sucedida")
         }).catch((error: Error) => {
             console.log(`Conexão não foi bem sucedida: ${error}`)
-        })
+        });
+    
+    sequelize.sync();
 }

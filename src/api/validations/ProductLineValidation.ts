@@ -1,8 +1,8 @@
 import { celebrate, Joi, Segments } from "celebrate";
 
 const productLineValidation = {
-    productLine: Joi.string(),
-    textDescription: Joi.string(),
+    productLine: Joi.string().max(50),
+    textDescription: Joi.string().max(4000).allow('', null),
     htmlDescription: Joi.string().allow('', null),
     image: Joi.string().allow('', null)
 };

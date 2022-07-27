@@ -4,7 +4,7 @@ const orderValidation = {
     orderDate: Joi.date(),
     requiredDate: Joi.date(),
     shippedDate: Joi.date().allow(null),
-    status: Joi.string(),
+    status: Joi.string().max(15),
     comments: Joi.string().allow('', null),
     customerNumber: Joi.number().integer()
 };

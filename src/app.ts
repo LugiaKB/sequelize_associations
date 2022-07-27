@@ -9,7 +9,7 @@ import AppError from './utils/AppError';
 
 const app: Express = express();
 const port: number = 3000;
-//teste
+
 app.use(bodyParser.json());
 
 app.use("/api/v1/", routes);

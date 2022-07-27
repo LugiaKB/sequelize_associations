@@ -31,14 +31,14 @@ class Office extends Model<OfficeAttributes, OfficeInput> {
 
 Office.init({
     officeCode: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    city: {type: DataTypes.STRING},
-    phone: {type: DataTypes.STRING},
-    addressLine1: {type: DataTypes.STRING},
-    addressLine2: {type: DataTypes.STRING},
-    state: {type: DataTypes.STRING},
-    country: {type: DataTypes.STRING},
-    postalCode: {type: DataTypes.STRING},
-    territory: {type: DataTypes.STRING},
+    city: {type: DataTypes.STRING(50), allowNull: false},
+    phone: {type: DataTypes.STRING(50), allowNull: false},
+    addressLine1: {type: DataTypes.STRING(50), allowNull: false},
+    addressLine2: {type: DataTypes.STRING(50)},
+    state: {type: DataTypes.STRING(50)},
+    country: {type: DataTypes.STRING(50), allowNull: false},
+    postalCode: {type: DataTypes.STRING(15), allowNull: false},
+    territory: {type: DataTypes.STRING(10)},
 
 }, {
     sequelize,

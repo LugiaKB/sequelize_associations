@@ -28,13 +28,13 @@ class Employee extends Model<EmployeeAttributes, EmployeeInput> {
 
 Employee.init({
     employeeNumber: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    lastName: {type: DataTypes.STRING},
-    firstName: {type: DataTypes.STRING},
-    extension: {type: DataTypes.STRING},
-    email: {type: DataTypes.STRING},
-    officeCode: {type: DataTypes.INTEGER},
+    lastName: {type: DataTypes.STRING(50), allowNull: false},
+    firstName: {type: DataTypes.STRING(50), allowNull: false},
+    extension: {type: DataTypes.STRING(10), allowNull: false},
+    email: {type: DataTypes.STRING(100), allowNull: false},
+    officeCode: {type: DataTypes.INTEGER, allowNull: false},
     reportsTo: {type: DataTypes.INTEGER},
-    jobTitle: {type: DataTypes.STRING},
+    jobTitle: {type: DataTypes.STRING(50), allowNull: false},
 
 }, {
     sequelize,

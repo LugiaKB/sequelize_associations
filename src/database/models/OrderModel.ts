@@ -26,12 +26,12 @@ class Order extends Model<OrderAttributes, OrderInput> {
 
 Order.init({
     orderNumber: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    orderDate: {type: DataTypes.DATE},
-    requiredDate: {type: DataTypes.DATE},
+    orderDate: {type: DataTypes.DATE, allowNull: false},
+    requiredDate: {type: DataTypes.DATE, allowNull: false},
     shippedDate: {type: DataTypes.DATE},
-    status: {type: DataTypes.STRING},
+    status: {type: DataTypes.STRING(15), allowNull: false},
     comments: {type: DataTypes.STRING},
-    customerNumber: {type: DataTypes.NUMBER},
+    customerNumber: {type: DataTypes.INTEGER, allowNull: false},
 
 }, {
     sequelize,
